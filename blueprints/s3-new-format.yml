@@ -18,5 +18,5 @@ grains:
         - acl: private
         - name: 'meirs-bucket-{{ sandboxid | downcase }}'
       outputs:
-        - s3_bucket_arn
+        - s3_bucket_arn 
         
