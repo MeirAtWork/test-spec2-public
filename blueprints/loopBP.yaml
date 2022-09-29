@@ -1,0 +1,28 @@
+spec_version: 2
+description: Simple s3 buckets provisioning
+
+
+outputs:
+  twoGrains1:
+    value: '{{ .grains.loopGrain.outputs.bucket_1 }}'
+  twoGrains2:
+    value: '{{ .grains.loopGrain.outputs.bucket_2 }}'
+    
+grains:
+  loopGrain:
+    kind: blueprint
+    spec: 
+      source:
+        store: repo
+        path: blueprints
+      host:
+        name: kubernetes-testing1
+      inputs:
+        - region: us-west-1
+        - acl: private
+        - bucket_1_name: lucky
+        - bucket_2_name: luke
+        - host_name: kubernetes-testing1
+      outputs:
+        - bucket_1
+        - bucket_2
